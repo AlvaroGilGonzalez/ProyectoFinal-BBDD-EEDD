@@ -8,10 +8,11 @@ import java.sql.ResultSet;
 /**
  *
  * @author lionel
+ * @author alvaro
  */
 public class DBManager {
 
-    // Conexión a la base de datos
+    // Conexion a la base de datos
     private static Connection conn = null;
 
     // Configuración de la conexión a la base de datos
@@ -24,7 +25,7 @@ public class DBManager {
     private static final String DB_MSQ_CONN_OK = "CONEXIÓN CORRECTA";
     private static final String DB_MSQ_CONN_NO = "ERROR EN LA CONEXIÓN";
 
-    // Configuración de la tabla Clientes
+    // Configuracion de la tabla Clientes
     private static final String DB_CLI = "clientes";
     private static final String DB_CLI_SELECT = "SELECT * FROM " + DB_CLI;
     private static final String DB_CLI_ID = "id";
@@ -32,7 +33,7 @@ public class DBManager {
     private static final String DB_CLI_DIR = "direccion";
 
     //////////////////////////////////////////////////
-    // MÉTODOS DE CONEXIÓN A LA BASE DE DATOS
+    // METODOS DE CONEXION A LA BASE DE DATOS
     //////////////////////////////////////////////////
     ;
     
@@ -73,9 +74,9 @@ public class DBManager {
     }
 
     /**
-     * Comprueba la conexión y muestra su estado por pantalla
+     * Comprueba la conexionn y muestra su estado por pantalla
      *
-     * @return true si la conexión existe y es válida, false en caso contrario
+     * @return true si la conexionn existe y es valida, false en caso contrario
      */
     public static boolean isConnected() {
         // Comprobamos estado de la conexión
@@ -94,7 +95,7 @@ public class DBManager {
     }
 
     /**
-     * Cierra la conexión con la base de datos
+     * Cierra la conexion con la base de datos
      */
     public static void close() {
         try {
@@ -107,7 +108,7 @@ public class DBManager {
     }
 
     //////////////////////////////////////////////////
-    // MÉTODOS DE TABLA CLIENTES
+    // MeTODOS DE TABLA CLIENTES
     //////////////////////////////////////////////////
     ;
     
@@ -160,7 +161,7 @@ public class DBManager {
     }
 
     //////////////////////////////////////////////////
-    // MÉTODOS DE UN SOLO CLIENTE
+    // MeTODOS DE UN SOLO CLIENTE
     //////////////////////////////////////////////////
     ;
     
@@ -254,7 +255,7 @@ public class DBManager {
      * Solicita a la BD insertar un nuevo registro cliente
      *
      * @param nombre nombre del cliente
-     * @param direccion dirección del cliente
+     * @param direccion direccion del cliente
      * @return verdadero si pudo insertarlo, false en caso contrario
      */
     public static boolean insertCliente(String nombre, String direccion) {
@@ -285,7 +286,7 @@ public class DBManager {
      *
      * @param id id del cliente a modificar
      * @param nombre nuevo nombre del cliente
-     * @param direccion nueva dirección del cliente
+     * @param direccion nueva direccion del cliente
      * @return verdadero si pudo modificarlo, false en caso contrario
      */
     public static boolean updateCliente(int id, String nuevoNombre, String nuevaDireccion) {
