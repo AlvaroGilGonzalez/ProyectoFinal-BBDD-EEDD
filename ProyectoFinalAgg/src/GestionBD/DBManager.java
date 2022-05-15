@@ -16,15 +16,15 @@ public class DBManager {
     // Conexion a la base de datos
     private static Connection conn = null;
 
-    // Configuración de la conexión a la base de datos
+    // Configuracion de la conexion a la base de datos
     private static final String DB_HOST = "localhost";
     private static final String DB_PORT = "3306";
     private static final String DB_NAME = "tienda";
     private static final String DB_URL = "jdbc:mysql://" + DB_HOST + ":" + DB_PORT + "/" + DB_NAME + "?serverTimezone=UTC";
     private static final String DB_USER = "root";
     private static final String DB_PASS = "usuario";
-    private static final String DB_MSQ_CONN_OK = "CONEXIÓN CORRECTA";
-    private static final String DB_MSQ_CONN_NO = "ERROR EN LA CONEXIÓN";
+    private static final String DB_MSQ_CONN_OK = "CONEXION CORRECTA";
+    private static final String DB_MSQ_CONN_NO = "ERROR EN LA CONEXION";
 
     // Configuracion de la tabla Clientes
     private static final String DB_CLI = "clientes";
@@ -100,7 +100,7 @@ public class DBManager {
      */
     public static void close() {
         try {
-            System.out.print("Cerrando la conexión...");
+            System.out.print("Cerrando la conexion...");
             conn.close();
             System.out.println("OK!");
         } catch (SQLException ex) {
@@ -109,7 +109,7 @@ public class DBManager {
     }
 
     //////////////////////////////////////////////////
-    // MeTODOS DE TABLA CLIENTES
+    // METODOS DE TABLA CLIENTES
     //////////////////////////////////////////////////
     ;
     
@@ -162,7 +162,7 @@ public class DBManager {
     }
 
     //////////////////////////////////////////////////
-    // MeTODOS DE UN SOLO CLIENTE
+    // METODOS DE UN SOLO CLIENTE
     //////////////////////////////////////////////////
     ;
     
@@ -311,7 +311,7 @@ public class DBManager {
                 System.out.println("OK!");
                 return true;
             } else {
-                System.out.println("ERROR. ResultSet vacío.");
+                System.out.println("ERROR. ResultSet vacio.");
                 return false;
             }
         } catch (SQLException ex) {
@@ -346,7 +346,7 @@ public class DBManager {
                 System.out.println("OK!");
                 return true;
             } else {
-                System.out.println("ERROR. ResultSet vacío.");
+                System.out.println("ERROR. ResultSet vacio.");
                 return false;
             }
 
