@@ -2,6 +2,7 @@ package GestionBD;
 
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -244,6 +245,26 @@ public class DBManager {
             ex.printStackTrace();
         }
     }
+    
+    public static boolean nuevoCliente(String nombre,String direccion) {
+   	 try {
+   		System.out.print("Insertando cliente " + nombre + "...");
+			CallableStatement cStmt = conn.prepareCall("{call insertarCliente(?,?,?,?)}");
+			cStmt.setString(1, DB_CLI_NOM);
+			cStmt.setString(2, DB_CLI_DIR);  
+			cStmt.setString(3,nombre);  
+			cStmt.setString(4,direccion);  
+			
+			cStmt.execute(); 
+			cStmt.close();
+	         System.out.println("OK!");
+	         return true;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		} 
+   }
 
     /**
      * Solicita a la BD insertar un nuevo registro cliente

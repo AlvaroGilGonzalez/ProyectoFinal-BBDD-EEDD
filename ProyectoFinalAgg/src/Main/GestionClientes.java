@@ -27,10 +27,11 @@ public class GestionClientes {
         System.out.println("");
         System.out.println("MENU PRINCIPAL");
         System.out.println("1. Listar clientes");
-        System.out.println("2. Nuevo cliente");
-        System.out.println("3. Modificar cliente");
-        System.out.println("4. Eliminar cliente");
-        System.out.println("5. Salir");
+        System.out.println("2. Nuevo cliente (Usamos PrepareStatement)");
+        System.out.println("3. Nuevo cliente (Usamos CallableStatement");
+        System.out.println("4. Modificar cliente");
+        System.out.println("5. Eliminar cliente");
+        System.out.println("6. Salir");
         
         Scanner in = new Scanner(System.in);
             
@@ -41,15 +42,18 @@ public class GestionClientes {
                 opcionMostrarClientes();
                 return false;
             case 2:
-                opcionNuevoCliente();
+                opcionNuevoClientePreparedStatement();
                 return false;
             case 3:
+                opcionNuevoClienteCallableStatement();
+                return false; 
+            case 4:
                 opcionModificarCliente();
                 return false;
-            case 4:
+            case 5:
                 opcionEliminarCliente();
                 return false;
-            case 5:
+            case 6:
                 return true;
             default:
                 System.out.println("Opcion elegida incorrecta");
@@ -92,7 +96,7 @@ public class GestionClientes {
         DBManager.printTablaClientes();
     }
 
-    public static void opcionNuevoCliente() {
+    public static void opcionNuevoClientePreparedStatement() {
         Scanner in = new Scanner(System.in);
 
         System.out.println("Introduce los datos del nuevo cliente:");
@@ -100,6 +104,22 @@ public class GestionClientes {
         String direccion = pideLinea("Direccion: ");
 
         boolean res = DBManager.insertCliente(nombre, direccion);
+
+        if (res) {
+            System.out.println("Cliente registrado correctamente");
+        } else {
+            System.out.println("Error :(");
+        }
+    }
+    
+    public static void opcionNuevoClienteCallableStatement() {
+        Scanner in = new Scanner(System.in);
+
+        System.out.println("Introduce los datos del nuevo cliente:");
+        String nombre = pideLinea("Nombre: ");
+        String direccion = pideLinea("Direccion: ");
+
+        boolean res = DBManager.nuevoCliente(nombre, direccion);
 
         if (res) {
             System.out.println("Cliente registrado correctamente");
