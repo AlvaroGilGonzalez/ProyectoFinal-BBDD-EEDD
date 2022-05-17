@@ -9,3 +9,6 @@ V1.1: Se han realizado las siguientes modificaciones:
       -Hemos cambiado los Statement por PreparedStatement en las funciones getCliente() y getTablaClientes(int resultSetType, int resultSetConcurrency)
       -Se ha eliminado la funcion getTablaClientes() ya que no se estaba haciendo uso de ella en ningun momento. Todo el rato se hacia la llamada a la funcion
       getTablaClientes(int resultSetType, int resultSetConcurrency).
+      
+V1.2: Actualmente estoy trabajando en esta version      
+      
