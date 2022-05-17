@@ -34,7 +34,7 @@ public class GestionClientes {
         
         Scanner in = new Scanner(System.in);
             
-        int opcion = pideInt("Elige una opción: ");
+        int opcion = pideInt("Elige una opcion: ");
         
         switch (opcion) {
             case 1:
@@ -124,7 +124,7 @@ public class GestionClientes {
 
         // Solicitamos los nuevos datos
         String nombre = pideLinea("Nuevo nombre: ");
-        String direccion = pideLinea("Nueva dirección: ");
+        String direccion = pideLinea("Nueva direccion: ");
 
         // Registramos los cambios
         boolean res = DBManager.updateCliente(id, nombre, direccion);
