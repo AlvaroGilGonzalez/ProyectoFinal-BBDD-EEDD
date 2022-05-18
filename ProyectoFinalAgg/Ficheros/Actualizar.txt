@@ -1,0 +1,5 @@
+tienda
+clientes
+nombre,direccion
+3,Alfredo,Valencia
+6,Rafa,Cordoba

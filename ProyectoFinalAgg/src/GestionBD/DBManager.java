@@ -425,5 +425,47 @@ public class DBManager {
 			e.printStackTrace();
 		}
     }
+    
+    public static void modificarClienteFichero(String ruta) {
+    	File f=new File(ruta);
+    	
+    	try {
+			Scanner lecturaFichero=new Scanner(f);
+			//No utilizamos las tres primeras lineas del fichero ya que en este punto no nos interesan para ninguna operacion
+			lecturaFichero.nextLine();
+			lecturaFichero.nextLine();
+			lecturaFichero.nextLine();
+			while(lecturaFichero.hasNext()) {
+				String contenidoActualizar=lecturaFichero.nextLine();
+				String datosCliente[]=contenidoActualizar.split(",");
+				updateCliente(Integer.parseInt(datosCliente[0]),datosCliente[1],datosCliente[2]);
+			}
+			lecturaFichero.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+    	
+    }
+    
+    public static void eliminarClienteFichero(String ruta) {
+    	File f=new File(ruta);
+    	
+    	try {
+			Scanner lecturaFichero=new Scanner(f);
+			//No utilizamos las dos primeras lineas del fichero ya que en este punto no nos interesan para ninguna operacion
+			lecturaFichero.nextLine();
+			lecturaFichero.nextLine();
+			while(lecturaFichero.hasNext()) {
+				String contenidoActualizar=lecturaFichero.nextLine();
+				String datosCliente[]=contenidoActualizar.split(",");
+				for(int i=0;i<datosCliente.length;i++) {
+					deleteCliente(Integer.parseInt(datosCliente[i]));
+				}
+			}
+			lecturaFichero.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+    }
 
 }

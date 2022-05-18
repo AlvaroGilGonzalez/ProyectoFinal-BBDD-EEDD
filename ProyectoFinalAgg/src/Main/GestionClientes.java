@@ -33,7 +33,9 @@ public class GestionClientes {
         System.out.println("5. Eliminar cliente");
         System.out.println("6. Volcar contenido de la tabla en un fichero");
         System.out.println("7. Insertar cliente a partir de un fichero");
-        System.out.println("8. Salir");
+        System.out.println("8. Modificar cliente a partir de un fichero");
+        System.out.println("9. Eliminar cliente a partir de un fichero");
+        System.out.println("10. Salir");
         
         Scanner in = new Scanner(System.in);
             
@@ -62,7 +64,13 @@ public class GestionClientes {
             	opcionNuevoClienteFichero();
             	return false;
             case 8:
-                return true;
+            	opcionModificarClienteFichero();
+                return false;
+            case 9:
+            	opcionEliminarClienteFichero();
+            	return false;
+            case 10:
+            	return true;
             default:
                 System.out.println("Opcion elegida incorrecta");
                 return false;
@@ -170,6 +178,13 @@ public class GestionClientes {
             System.out.println("Error :(");
         }
     }
+    
+    public static void opcionModificarClienteFichero() {
+    	Scanner in=new Scanner (System.in);
+    	System.out.println("Introduzca la ruta del fichero");
+    	String ruta=in.nextLine();
+    	DBManager.modificarClienteFichero(ruta);
+    }
 
     public static void opcionEliminarCliente() {
         Scanner in = new Scanner(System.in);
@@ -190,6 +205,13 @@ public class GestionClientes {
         } else {
             System.out.println("Error :(");
         }
+    }
+    
+    public static void opcionEliminarClienteFichero() {
+    	Scanner in=new Scanner (System.in);
+    	System.out.println("Introduzca la ruta del fichero");
+    	String ruta=in.nextLine();
+    	DBManager.eliminarClienteFichero(ruta);
     }
     
     public static void opcionVolcarDatos() {
