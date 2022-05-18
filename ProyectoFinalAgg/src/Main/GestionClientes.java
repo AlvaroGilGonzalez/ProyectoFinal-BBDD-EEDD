@@ -31,7 +31,9 @@ public class GestionClientes {
         System.out.println("3. Nuevo cliente (Usamos CallableStatement");
         System.out.println("4. Modificar cliente");
         System.out.println("5. Eliminar cliente");
-        System.out.println("6. Salir");
+        System.out.println("6. Volcar contenido de la tabla en un fichero");
+        System.out.println("7. Insertar cliente a partir de un fichero");
+        System.out.println("8. Salir");
         
         Scanner in = new Scanner(System.in);
             
@@ -54,6 +56,12 @@ public class GestionClientes {
                 opcionEliminarCliente();
                 return false;
             case 6:
+            	opcionVolcarDatos();
+            	return false;
+            case 7:
+            	opcionNuevoClienteFichero();
+            	return false;
+            case 8:
                 return true;
             default:
                 System.out.println("Opcion elegida incorrecta");
@@ -127,6 +135,13 @@ public class GestionClientes {
             System.out.println("Error :(");
         }
     }
+    
+    public static void opcionNuevoClienteFichero() {
+    	Scanner in=new Scanner (System.in);
+    	System.out.println("Introduzca la ruta en la que se encuentra el fichero que debemos leer");
+    	String ruta=in.nextLine();
+    	DBManager.nuevoClienteFichero(ruta);
+    }
 
     public static void opcionModificarCliente() {
         Scanner in = new Scanner(System.in);
@@ -175,5 +190,12 @@ public class GestionClientes {
         } else {
             System.out.println("Error :(");
         }
+    }
+    
+    public static void opcionVolcarDatos() {
+    	Scanner in=new Scanner (System.in);
+    	System.out.println("Introduzca el nombre del fichero en el que se volcaran los datos");
+    	String ruta=in.nextLine();
+    	DBManager.VolcarDatos(ruta);
     }
 }

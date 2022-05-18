@@ -2,10 +2,15 @@ package GestionBD;
 
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Scanner;
 import java.sql.ResultSet;
 
 /**
@@ -368,6 +373,58 @@ public class DBManager {
             ex.printStackTrace();
             return false;
         }
+    }
+    
+    //////////////////////////////////////////////////
+    // METODOS PARA TRABAJAR CON FICHEROS
+    //////////////////////////////////////////////////
+    
+    public static void VolcarDatos(String ruta) {
+    	String ruta2="Ficheros/"+ruta;
+    	File f=new File(ruta2);
+    	
+    	try {
+			FileWriter escribirFichero=new FileWriter(f);
+			
+			escribirFichero.write(DB_NAME+"\t"+DB_CLI+"\n");
+			escribirFichero.write(DB_CLI_ID+"\t"+DB_CLI_NOM+"\t\t"+DB_CLI_DIR+"\n");
+			
+			ResultSet rs = getTablaClientes(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
+			
+            while (rs.next()) {
+                int id = rs.getInt(DB_CLI_ID);
+                String n = rs.getString(DB_CLI_NOM);
+                String d = rs.getString(DB_CLI_DIR);
+                escribirFichero.write(id+"\t"+n+"\t\t"+d+"\n");
+            }
+            escribirFichero.close();
+            rs.close();
+            System.out.println("La informacion se ha volcado correctamente en el archivo.");
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    }
+    
+    public static void nuevoClienteFichero(String ruta) {
+    	File f=new File(ruta);
+    	try {
+			Scanner lecturaFichero=new Scanner(f);
+			//No utilizamos las dos primeras lineas del fichero ya que en este punto no nos interesan para ninguna operacion
+			lecturaFichero.nextLine();
+			lecturaFichero.nextLine();
+			lecturaFichero.nextLine();
+			while(lecturaFichero.hasNext()) {
+				String contenidoInsertar=lecturaFichero.nextLine();
+				String datosCliente[]=contenidoInsertar.split(",");
+				insertCliente(datosCliente[0],datosCliente[1]);
+			}
+			lecturaFichero.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
     }
 
 }
