@@ -4,10 +4,10 @@ id	nombre		direccion
 2	Sergi		Valencia
 3	Alfredo		Valencia
 4	Paco		Valencia
-5	Maria		Castellón
+5	Maria		CastellÃ³n
 6	Pepito		Alicante
 7	Luis		Elx
-8	Antonia		Xàtiva
+8	Antonia		XÃ tiva
 9	Carmen		Paterna
 10	alvaro		torremolinos
 11	jose		totalan
