@@ -15,7 +15,6 @@ import java.sql.ResultSet;
 
 /**
  *
- * @author lione
  * @author alvaro
  */
 public class DBManager {

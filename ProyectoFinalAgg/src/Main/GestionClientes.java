@@ -5,7 +5,7 @@ import GestionBD.DBManager;
 
 /**
  *
- * @author lionel
+ * @author alvaro
  */
 public class GestionClientes {
 
