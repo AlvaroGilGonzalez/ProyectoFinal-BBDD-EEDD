@@ -1,0 +1,5 @@
+Tienda 
+Cliente
+nombre,direccion
+alvaro,malaga
+carmen,ayamonte
