@@ -10,5 +10,11 @@ V1.1: Se han realizado las siguientes modificaciones:
       -Se ha eliminado la funcion getTablaClientes() ya que no se estaba haciendo uso de ella en ningun momento. Todo el rato se hacia la llamada a la funcion
       getTablaClientes(int resultSetType, int resultSetConcurrency).
       
-V1.2: Actualmente estoy trabajando en esta version      
+V1.2: Se han añadido las siguientes funcionalidades:
+      -Opcion de crear cliente mediante un procedimiento(asi hacemos uso de la clase callableStatement)
+      -Opcion para volcar todo el contenido de la tabla en un fichero
+      -Opcion de crear clientes desde un fichero
+      -Opcion de modificar clientes desde un fichero
+      -Opcion para eliminar clientes desde un fichero
+      -Nota:Se ha creado una carpeta llamada Ficheros para centralizar en ella todo el trabajo con los mismos. La estructura utilizada en los ficheros que se deben leer        es la sugerida en el enunciado de la practica. 
       
