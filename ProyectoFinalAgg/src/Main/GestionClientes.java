@@ -4,11 +4,16 @@ import java.util.Scanner;
 import GestionBD.DBManager;
 
 /**
- *
+ * Clase principal de este programa, en ella se muestra al usuario las opciones disponibles y ademas se le pide por teclado todos los datos necesarios para realizar las posteriores
+ * consultas o actualizaciones en la base de datos (todo ello haciendo llamada a los metodos que encontramos en DBManager)
  * @author alvaro
  */
 public class GestionClientes {
-
+	
+	/**
+	 * Metodo Main de nuestro programa
+	 * @param args
+	 */
     public static void main(String[] args) {
 
         DBManager.loadDriver();
@@ -23,6 +28,10 @@ public class GestionClientes {
 
     }
 
+    /**
+     * Muestra un menu con las distintas opciones que podemos elegir
+     * @return (false para todos las opciones y true para la opcion salir)
+     */
     public static boolean menuPrincipal() {
         System.out.println("");
         System.out.println("MENU PRINCIPAL");
@@ -82,6 +91,11 @@ public class GestionClientes {
         
     }
     
+    /**
+     * Pide un numero entero por teclado
+     * @param mensaje (mensaje que se le mostrara al usuario justo antes de pedir el dato)
+     * @return (el numero entero introducido por teclado)
+     */
     public static int pideInt(String mensaje){
         
         while(true) {
@@ -97,6 +111,11 @@ public class GestionClientes {
         }
     }
     
+    /**
+     * Pide una linea por teclado
+     * @param mensaje (mensaje que se le mostrara al usuario justo antes de pedir el dato)
+     * @return (la linea introducida por teclado)
+     */
     public static String pideLinea(String mensaje){
         
         while(true) {
@@ -110,12 +129,18 @@ public class GestionClientes {
             }
         }
     }
-
+    
+    /**
+     * Nos muestra un mensaje y llama a la funcion printTablaClientes()
+     */
     public static void opcionMostrarClientes() {
         System.out.println("Listado de Clientes:");
         DBManager.printTablaClientes();
     }
 
+    /**
+     * Pide por teclado los datos necesarios para crear un nuevo cliente y llama a la funcion insertCliente()
+     */
     public static void opcionNuevoClientePreparedStatement() {
         Scanner in = new Scanner(System.in);
 
@@ -132,6 +157,9 @@ public class GestionClientes {
         }
     }
     
+    /**
+     * Pide por teclado los datos necesarios para crear un nuevo cliente y llama a la funcion nuevoCliente()
+     */
     public static void opcionNuevoClienteCallableStatement() {
         Scanner in = new Scanner(System.in);
 
@@ -148,13 +176,19 @@ public class GestionClientes {
         }
     }
     
+    /**
+     * Pide por teclado la ruta donde se encuentra el fichero con la informacion de los nuevos clientes y llama a la funcion nuevoClienteFichero()
+     */
     public static void opcionNuevoClienteFichero() {
     	Scanner in=new Scanner (System.in);
     	System.out.println("Introduzca la ruta en la que se encuentra el fichero que debemos leer");
     	String ruta=in.nextLine();
     	DBManager.nuevoClienteFichero(ruta);
     }
-
+ 
+    /**
+     * Pide por teclado los datos necesarios para modificar un cliente y llama a la funcion updateCliente()
+     */
     public static void opcionModificarCliente() {
         Scanner in = new Scanner(System.in);
 
@@ -183,6 +217,9 @@ public class GestionClientes {
         }
     }
     
+    /**
+     * Pide por teclado la ruta del fichero con la informacion de los clientes a modificar y llama a la funcion modificarClienteFichero()
+     */
     public static void opcionModificarClienteFichero() {
     	Scanner in=new Scanner (System.in);
     	System.out.println("Introduzca la ruta del fichero");
@@ -190,6 +227,9 @@ public class GestionClientes {
     	DBManager.modificarClienteFichero(ruta);
     }
 
+    /**
+     * Pide por teclado los datos necesarios para eliminar a un cliente y llama a la funcion deleteCliente()
+     */
     public static void opcionEliminarCliente() {
         Scanner in = new Scanner(System.in);
 
@@ -211,6 +251,9 @@ public class GestionClientes {
         }
     }
     
+    /**
+     * Pide por teclado la ruta donde se encuentra el fichero con la informacion del cliente a eliminar y llama a la funcion eliminarClienteFichero()
+     */
     public static void opcionEliminarClienteFichero() {
     	Scanner in=new Scanner (System.in);
     	System.out.println("Introduzca la ruta del fichero");
@@ -218,6 +261,9 @@ public class GestionClientes {
     	DBManager.eliminarClienteFichero(ruta);
     }
     
+    /**
+     * Pide por teclado la ruta del archivo en la que volcaremos los datos de la tabla y llama a la funcion VolcarDatos()
+     */
     public static void opcionVolcarDatos() {
     	Scanner in=new Scanner (System.in);
     	System.out.println("Introduzca el nombre del fichero en el que se volcaran los datos");
@@ -225,6 +271,9 @@ public class GestionClientes {
     	DBManager.VolcarDatos(ruta);
     }
     
+    /**
+     * Pide por teclado la direccion de los clientes que se quieren filtar y llama a la funcion filtrarClientesDireccion()
+     */
     public static void opcionFiltrarClientes() {
     	Scanner in=new Scanner (System.in);
     	System.out.println("Introduzca la direccion de los clientes que desea ver");

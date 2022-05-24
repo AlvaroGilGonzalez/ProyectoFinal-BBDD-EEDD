@@ -14,7 +14,7 @@ import java.util.Scanner;
 import java.sql.ResultSet;
 
 /**
- *
+ * Clase BDManager, en esta clase se incluyen todos los metodos que trabajan de manera directa sobre la base de datos, ya sea haciendo consultas o actualizaciones
  * @author alvaro
  */
 public class DBManager {
@@ -159,6 +159,10 @@ public class DBManager {
         }
     }
     
+    /**
+     * Imprime los clientes que tengan la direccion introducida por parametro
+     * @param direccion (direccion de los clientes que debemos mostrar)
+     */
     public static void filtrarClientesDireccion(String direccion) {
   	  try {
 			CallableStatement cStmt = conn.prepareCall("{call filtrarDireccion(?)}");
@@ -269,6 +273,12 @@ public class DBManager {
         }
     }
     
+    /**
+     * Inserta un nuevo cliente haciendo uso de un procedimiento creado para ello
+     * @param nombre (nombre del cliente)
+     * @param direccion (direccion del cliente)
+     * @return (true si el cliente se ha añadido, false si no se ha podido añadir)
+     */
     public static boolean nuevoCliente(String nombre,String direccion) {
    	 try {
    		System.out.print("Insertando cliente " + nombre + "...");
@@ -397,6 +407,10 @@ public class DBManager {
     // METODOS PARA TRABAJAR CON FICHEROS
     //////////////////////////////////////////////////
     
+    /**
+     * Vuelca todo el contenido de la tabla en un fichero de texto plano
+     * @param ruta (ruta donde se encuentra el fichero en el que volcar los datos)
+     */
     public static void VolcarDatos(String ruta) {
     	String ruta2="Ficheros/"+ruta;
     	File f=new File(ruta2);
@@ -426,6 +440,10 @@ public class DBManager {
 		}
     }
     
+    /**
+     * Inserta nuevos clientes leyendo la informacion de los mismos desde un fichero
+     * @param ruta (ruta donde se encuentra el fichero que debemos leer)
+     */
     public static void nuevoClienteFichero(String ruta) {
     	File f=new File(ruta);
     	try {
@@ -445,6 +463,10 @@ public class DBManager {
 		}
     }
     
+    /**
+     * Modifica los datos de clientes leyendo la informacion a actualizar en un fichero
+     * @param ruta (ruta donde se encuentra el fichero que debemos leer)
+     */
     public static void modificarClienteFichero(String ruta) {
     	File f=new File(ruta);
     	
@@ -466,6 +488,10 @@ public class DBManager {
     	
     }
     
+    /**
+     * Eliminamos clientes leyendo en un fichero aquellos que se deben eliminar
+     * @param ruta (ruta donde se encuentra el fichero que debemos leer)
+     */
     public static void eliminarClienteFichero(String ruta) {
     	File f=new File(ruta);
     	
