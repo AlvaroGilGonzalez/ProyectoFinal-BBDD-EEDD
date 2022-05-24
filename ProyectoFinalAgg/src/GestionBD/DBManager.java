@@ -55,10 +55,10 @@ public class DBManager {
             System.out.println("OK!");
             return true;
         } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
+            System.err.println("No ha sido posible cargar el driver");
             return false;
         } catch (Exception ex) {
-            ex.printStackTrace();
+        	 System.err.println("No ha sido posible cargar el driver");
             return false;
         }
     }
@@ -75,7 +75,7 @@ public class DBManager {
             System.out.println("OK!");
             return true;
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println("No ha sido posible conectarse a la base de datos");
             return false;
         }
     }
@@ -96,7 +96,6 @@ public class DBManager {
             }
         } catch (SQLException ex) {
             System.out.println(DB_MSQ_CONN_NO);
-            ex.printStackTrace();
             return false;
         }
     }
@@ -110,7 +109,7 @@ public class DBManager {
             conn.close();
             System.out.println("OK!");
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println("No ha sido posible cerrar la conexion con la base de datos");
         }
     }
 
@@ -134,7 +133,7 @@ public class DBManager {
             //stmt.close();
             return rs;
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println("No ha sido posible obtener la tabla clientes de la base de datos");
             return null;
         }
 
@@ -155,7 +154,7 @@ public class DBManager {
             }
             rs.close();
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println("No ha sido posible imprimir por pantalla la tabla clientes");
         }
     }
     
@@ -178,7 +177,7 @@ public class DBManager {
 	             System.out.println(id + "\t" + n + "\t" + d);
           }  
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.err.println("No ha sido posible filtrar clientes por su direccion");
 		}  
   }
 
@@ -210,7 +209,7 @@ public class DBManager {
             return rs;
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println("No ha sido posible obtener el cliente con el id indicado");
             return null;
         }
     }
@@ -242,7 +241,7 @@ public class DBManager {
             return true;
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println("No ha sido posible comprobar si el cliente con el id indicado existe en la base de datos");
             return false;
         }
     }
@@ -268,8 +267,7 @@ public class DBManager {
             System.out.println("Cliente " + cid + "\t" + nombre + "\t" + direccion);
 
         } catch (SQLException ex) {
-            System.out.println("Error al solicitar cliente " + id);
-            ex.printStackTrace();
+            System.err.println("Error al solicitar cliente " + id);
         }
     }
     
@@ -294,7 +292,7 @@ public class DBManager {
 	         return true;
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.err.println("No ha sido posible insertar el nuevo cliente haciendo uso del procedimiento");
 			return false;
 		} 
    }
@@ -324,7 +322,7 @@ public class DBManager {
             return true;
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println("No ha sido posible insertar un nuevo cliente en la tabla");
             return false;
         }
     }
@@ -362,7 +360,7 @@ public class DBManager {
                 return false;
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println("No ha sido posible modificar los datos del cliente");
             return false;
         }
     }
@@ -398,7 +396,7 @@ public class DBManager {
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println("No ha sido posible eliminar el cliente con el id indicado");
             return false;
         }
     }
@@ -434,9 +432,9 @@ public class DBManager {
             System.out.println("La informacion se ha volcado correctamente en el archivo.");
 			
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.err.println("No ha sido posible volcar los datos en el fichero con la ruta especificada");
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.err.println("No ha sido posible volcar los datos en el fichero con la ruta especificada");
 		}
     }
     
@@ -459,7 +457,7 @@ public class DBManager {
 			}
 			lecturaFichero.close();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			System.err.println("No ha sido posible insertar el cliente leyendo el fichero especificado");
 		}
     }
     
@@ -483,7 +481,7 @@ public class DBManager {
 			}
 			lecturaFichero.close();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			System.err.println("No ha sido posible modificar el cliente leyendo el fichero especificado");
 		}
     	
     }
@@ -509,7 +507,7 @@ public class DBManager {
 			}
 			lecturaFichero.close();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			System.err.println("No ha sido posible eliminar el cliente leyendo el fichero especificado");
 		}
     }
     
@@ -531,7 +529,7 @@ public class DBManager {
 			stmt.execute();
 			System.out.println("La nueva tabla se ha creado correctamente");
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.err.println("No ha sido posible crear una nueva tabla en la base de datos");
 		}
 	}
 
