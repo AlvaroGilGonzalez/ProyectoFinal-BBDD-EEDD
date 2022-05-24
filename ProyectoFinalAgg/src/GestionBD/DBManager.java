@@ -158,6 +158,25 @@ public class DBManager {
             ex.printStackTrace();
         }
     }
+    
+    public static void filtrarClientesDireccion(String direccion) {
+  	  try {
+			CallableStatement cStmt = conn.prepareCall("{call filtrarDireccion(?)}");
+			cStmt.setString(1,direccion);
+			cStmt.execute();
+			
+			ResultSet rs = cStmt.getResultSet();  
+			
+			while (rs.next()) {  
+				 int id = rs.getInt(DB_CLI_ID);
+	             String n = rs.getString(DB_CLI_NOM);
+	             String d = rs.getString(DB_CLI_DIR);
+	             System.out.println(id + "\t" + n + "\t" + d);
+          }  
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}  
+  }
 
     //////////////////////////////////////////////////
     // METODOS DE UN SOLO CLIENTE

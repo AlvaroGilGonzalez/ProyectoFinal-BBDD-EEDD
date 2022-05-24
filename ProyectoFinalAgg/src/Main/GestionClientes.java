@@ -31,11 +31,12 @@ public class GestionClientes {
         System.out.println("3. Nuevo cliente (Usamos CallableStatement");
         System.out.println("4. Modificar cliente");
         System.out.println("5. Eliminar cliente");
-        System.out.println("6. Volcar contenido de la tabla en un fichero");
-        System.out.println("7. Insertar cliente a partir de un fichero");
-        System.out.println("8. Modificar cliente a partir de un fichero");
-        System.out.println("9. Eliminar cliente a partir de un fichero");
-        System.out.println("10. Salir");
+        System.out.println("6.Filtrar Clientes por su direccion");
+        System.out.println("7. Volcar contenido de la tabla en un fichero");
+        System.out.println("8.Insertar cliente a partir de un fichero");
+        System.out.println("9. Modificar cliente a partir de un fichero");
+        System.out.println("10. Eliminar cliente a partir de un fichero");
+        System.out.println("11. Salir");
         
         Scanner in = new Scanner(System.in);
             
@@ -58,18 +59,21 @@ public class GestionClientes {
                 opcionEliminarCliente();
                 return false;
             case 6:
-            	opcionVolcarDatos();
+            	opcionFiltrarClientes();
             	return false;
             case 7:
-            	opcionNuevoClienteFichero();
+            	opcionVolcarDatos();
             	return false;
             case 8:
+            	opcionNuevoClienteFichero();
+            	return false;
+            case 9:
             	opcionModificarClienteFichero();
                 return false;
-            case 9:
+            case 10:
             	opcionEliminarClienteFichero();
             	return false;
-            case 10:
+            case 11:
             	return true;
             default:
                 System.out.println("Opcion elegida incorrecta");
@@ -219,5 +223,12 @@ public class GestionClientes {
     	System.out.println("Introduzca el nombre del fichero en el que se volcaran los datos");
     	String ruta=in.nextLine();
     	DBManager.VolcarDatos(ruta);
+    }
+    
+    public static void opcionFiltrarClientes() {
+    	Scanner in=new Scanner (System.in);
+    	System.out.println("Introduzca la direccion de los clientes que desea ver");
+    	String direccion=in.nextLine();
+    	DBManager.filtrarClientesDireccion(direccion);
     }
 }
