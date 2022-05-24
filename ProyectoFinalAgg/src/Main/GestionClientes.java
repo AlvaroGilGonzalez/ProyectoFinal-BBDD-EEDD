@@ -185,8 +185,7 @@ public class GestionClientes {
      */
     public static void opcionNuevoClienteFichero() {
     	Scanner in=new Scanner (System.in);
-    	System.out.println("Introduzca la ruta en la que se encuentra el fichero que debemos leer");
-    	String ruta=in.nextLine();
+    	String ruta = pideLinea("Introduzca la ruta en la que se encuentra el fichero que debemos leer: ");
     	DBManager.nuevoClienteFichero(ruta);
     }
  
@@ -226,8 +225,7 @@ public class GestionClientes {
      */
     public static void opcionModificarClienteFichero() {
     	Scanner in=new Scanner (System.in);
-    	System.out.println("Introduzca la ruta del fichero");
-    	String ruta=in.nextLine();
+    	String ruta = pideLinea("Introduzca la ruta en la que se encuentra el fichero que debemos leer: ");
     	DBManager.modificarClienteFichero(ruta);
     }
 
@@ -260,8 +258,7 @@ public class GestionClientes {
      */
     public static void opcionEliminarClienteFichero() {
     	Scanner in=new Scanner (System.in);
-    	System.out.println("Introduzca la ruta del fichero");
-    	String ruta=in.nextLine();
+    	String ruta = pideLinea("Introduzca la ruta en la que se encuentra el fichero que debemos leer: ");
     	DBManager.eliminarClienteFichero(ruta);
     }
     
@@ -270,8 +267,7 @@ public class GestionClientes {
      */
     public static void opcionVolcarDatos() {
     	Scanner in=new Scanner (System.in);
-    	System.out.println("Introduzca el nombre del fichero en el que se volcaran los datos");
-    	String ruta=in.nextLine();
+    	String ruta = pideLinea("Introduzca el nombre del fichero en el que se volcaran los datos: ");
     	DBManager.VolcarDatos(ruta);
     }
     
@@ -280,8 +276,7 @@ public class GestionClientes {
      */
     public static void opcionFiltrarClientes() {
     	Scanner in=new Scanner (System.in);
-    	System.out.println("Introduzca la direccion de los clientes que desea ver");
-    	String direccion=in.nextLine();
+    	String direccion=pideLinea("Introduzca la direccion de los clientes que desea ver: ");
     	DBManager.filtrarClientesDireccion(direccion);
     }
     
@@ -290,14 +285,10 @@ public class GestionClientes {
      */
     public static void opcionCrearTabla() {
     	Scanner in=new Scanner (System.in);
-    	System.out.println("Introduzca el nombre de la nueva tabla");
-    	String nomTabla=in.nextLine();
-    	System.out.println("Introduzca el nombre de la primera columna (sera la clave primaria)");
-    	String c1=in.nextLine();
-    	System.out.println("Introduzca el nombre de la segunda columna");
-    	String c2=in.nextLine();
-    	System.out.println("Introduzca el nombre de la tercera columna");
-    	String c3=in.nextLine();
+    	String nomTabla=pideLinea("Introduzca el nombre de la nueva tabla: ");
+    	String c1=pideLinea("Introduzca el nombre de la primera columna (sera la clave primaria): ");
+    	String c2=pideLinea("Introduzca el nombre de la segunda columna: ");
+    	String c3=pideLinea("Introduzca el nombre de la tercera columna: ");
     	DBManager.crearTabla(nomTabla, c1, c2, c3);
     }
 }
