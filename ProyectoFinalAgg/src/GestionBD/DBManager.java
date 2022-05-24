@@ -512,5 +512,27 @@ public class DBManager {
 			e.printStackTrace();
 		}
     }
+    
+	//////////////////////////////////////////////////
+	// METODOS PARA CREAR TABLAS
+	//////////////////////////////////////////////////
+	
+	/**
+	* Crear una nueva tabla con 3 columnas cuyo nombre es pasado por parametro
+	* @param nombre (nombre de la tabla)
+	* @param columna1 (nombre de la columna1)
+	* @param columna2 (nombre de la columna2)
+	* @param columna3 (nombre de la columna3)
+	*/
+	public static void crearTabla(String nombre,String columna1,String columna2,String columna3) {
+		String sentencia="CREATE TABLE "+nombre+"("+columna1+" varchar(100) primary key,"+columna2+" varchar(100),"+columna3+" varchar(100))";
+		try {
+			PreparedStatement stmt=conn.prepareStatement(sentencia);
+			stmt.execute();
+			System.out.println("La nueva tabla se ha creado correctamente");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 }

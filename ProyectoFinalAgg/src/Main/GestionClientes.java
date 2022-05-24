@@ -40,12 +40,13 @@ public class GestionClientes {
         System.out.println("3. Nuevo cliente (Usamos CallableStatement");
         System.out.println("4. Modificar cliente");
         System.out.println("5. Eliminar cliente");
-        System.out.println("6.Filtrar Clientes por su direccion");
-        System.out.println("7. Volcar contenido de la tabla en un fichero");
-        System.out.println("8.Insertar cliente a partir de un fichero");
-        System.out.println("9. Modificar cliente a partir de un fichero");
-        System.out.println("10. Eliminar cliente a partir de un fichero");
-        System.out.println("11. Salir");
+        System.out.println("6. Filtrar Clientes por su direccion");
+        System.out.println("7. Crear una nueva tabla en la base de datos");
+        System.out.println("8. Volcar contenido de la tabla en un fichero");
+        System.out.println("9. Insertar cliente a partir de un fichero");
+        System.out.println("10.Modificar cliente a partir de un fichero");
+        System.out.println("11.Eliminar cliente a partir de un fichero");
+        System.out.println("12.Salir");
         
         Scanner in = new Scanner(System.in);
             
@@ -71,18 +72,21 @@ public class GestionClientes {
             	opcionFiltrarClientes();
             	return false;
             case 7:
-            	opcionVolcarDatos();
+            	opcionCrearTabla();
             	return false;
             case 8:
-            	opcionNuevoClienteFichero();
+            	opcionVolcarDatos();
             	return false;
             case 9:
+            	opcionNuevoClienteFichero();
+            	return false;
+            case 10:
             	opcionModificarClienteFichero();
                 return false;
-            case 10:
+            case 11:
             	opcionEliminarClienteFichero();
             	return false;
-            case 11:
+            case 12:
             	return true;
             default:
                 System.out.println("Opcion elegida incorrecta");
@@ -279,5 +283,21 @@ public class GestionClientes {
     	System.out.println("Introduzca la direccion de los clientes que desea ver");
     	String direccion=in.nextLine();
     	DBManager.filtrarClientesDireccion(direccion);
+    }
+    
+    /**
+     * Pide por teclado los datos necesarios para crear una nueva tabla y llama a la funcion crearTabla()
+     */
+    public static void opcionCrearTabla() {
+    	Scanner in=new Scanner (System.in);
+    	System.out.println("Introduzca el nombre de la nueva tabla");
+    	String nomTabla=in.nextLine();
+    	System.out.println("Introduzca el nombre de la primera columna (sera la clave primaria)");
+    	String c1=in.nextLine();
+    	System.out.println("Introduzca el nombre de la segunda columna");
+    	String c2=in.nextLine();
+    	System.out.println("Introduzca el nombre de la tercera columna");
+    	String c3=in.nextLine();
+    	DBManager.crearTabla(nomTabla, c1, c2, c3);
     }
 }
