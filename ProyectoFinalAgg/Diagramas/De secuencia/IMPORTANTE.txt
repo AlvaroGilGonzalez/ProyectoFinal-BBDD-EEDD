@@ -1,0 +1,6 @@
+He decidido hacer el diagrama de secuencia de los metodos mas importantes de la clase
+GestionClientes, el metodo main y el menu ya que nos dan una idea bastante general de la secuencia
+que el programa sigue.
+
+Debide a que el metodo menú tiene muchas opciones se hará una imagen por cada una de dichas
+opciones ya que si no el diagrama sería muy grande y prácticamente ilegible
