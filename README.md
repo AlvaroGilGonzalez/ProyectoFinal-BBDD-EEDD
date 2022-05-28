@@ -25,12 +25,10 @@ V1.2: Se han añadido las siguientes funcionalidades:
 V1.3: Se han añadido las siguientes funcionalidades:
       -Opcion de filtrar filas de clientes introduciendo su direccion
       -Opcion para crear una nueva tabla en la base de datos
-      
       Se han mejorado los siguientes aspectos del codigo:
       -Se han comentado todos los metodos de las clases con JavaDoc
       -Se ha optimizado la pedida de datos por teclado en algunos metodos
       -Se ha modificado los mensajes que lanzan las excepciones al ser capturadas para hacerlos más acordes a aquello que el usuario deberia ver.
-      
       Se ha incluido la siguiente documentación dentro de la carpeta del proyecto:
       -Documentación generada con Javadoc
       -Diagrama de clase
